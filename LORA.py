@@ -7,7 +7,7 @@ class LORA:
         self.Lora = SX126x()
 
         # Configure the self.Lora
-        self.Lora.setSPI(0, 0, 7800000)
+        self.Lora.setSpi(0, 0, 7800000)
         self.Lora.begin()
 
         # set transmit power to +22 dBm
@@ -30,9 +30,9 @@ class LORA:
 
         # get message and counter in last byte
         message = ""
-        while self.Lora.available() > 1 :
-            message += chr(self.Lora.read())          # read multiple bytes
-            counter = self.Lora.read()                # read single byte
+        while self.Lora.available() > 1:
+            message += chr(self.Lora.read())          # read message bytes
+        counter = self.Lora.read()                    # read counter (last byte only)
         return message
     
     # Transmit Function
@@ -44,7 +44,7 @@ class LORA:
         counter = 0
 
         self.Lora.beginPacket()
-        self.Lora.write(message, len(message)) # write multiple bytes
+        self.Lora.write(messageList) # write multiple bytes
         self.Lora.write(counter)               # write single byte
         self.Lora.endPacket()
         self.Lora.wait()
