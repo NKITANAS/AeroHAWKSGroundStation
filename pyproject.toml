@@ -8,11 +8,10 @@ authors = [
 readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
-    "pyserial (>=3.5,<4.0)",
-    "spidev (>=3.8,<4.0)",
-    "lorarf (>=1.4.0,<2.0.0)",
-    "gpiod (>=2.4.0,<3.0.0)",
-    "tkinter-qpython (>=8.6.0.5,<9.0.0.0)"
+    "pyserial>=3.5,<4.0",
+    "spidev>=3.8,<4.0",
+    "lorarf>=1.4.0,<2.0.0",
+    "gpiod>=2.4.0,<3.0.0",
 ]
 
 [tool.poetry]
