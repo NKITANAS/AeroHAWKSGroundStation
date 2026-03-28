@@ -11,11 +11,12 @@ class LORA:
         # --- HARDWARE INITIALIZATION ---
         # Standard Raspberry Pi Pins: NSS=8, RST=22, BUSY=23, DIO1=25
         # If your HAT uses different pins, change them here.
+
+        # SPI must be configured before begin() opens the device
+        self._lora.setSpi(0, 0, 7800000)
+
         if not self._lora.begin(8, 22, 23, 25):
             raise Exception("SX1262 hardware not found. Check wiring/pins.")
-
-        # SPI and initialisation
-        self._lora.setSpi(0, 0, 7800000)
 
         # Transmit power: +22 dBm
         self._lora.setTxPower(22, self._lora.TX_POWER_SX1262)
